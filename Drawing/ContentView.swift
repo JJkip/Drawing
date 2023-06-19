@@ -16,7 +16,7 @@ struct ContentView: View {
             path.addLine(to: CGPoint(x: 200, y: 100))
             path.closeSubpath()
         }
-        .stroke(.blue, lineWidth: 10)
+        .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
     }
 }
 
