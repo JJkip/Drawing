@@ -20,6 +20,22 @@ struct Triangle: Shape {
         return path
     }
 }
+
+struct Arc: Shape {
+    let startAgle: Angle
+    let endAngle: Angle
+    let clockwise: Bool
+    
+    func path(in rect: CGRect) -> Path {
+    
+        var path = Path()
+        
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: startAgle, endAngle: endAngle, clockwise: clockwise)
+        
+        return path
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
@@ -36,6 +52,10 @@ struct ContentView: View {
             //            .fill(.red)
                 .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
                 .frame(width: 300, height: 300)
+            
+            Arc(startAgle: .degrees(0), endAngle: .degrees(110), clockwise: true)
+                .stroke(.blue, lineWidth: 10)
+                .frame(width:300, height: 300)
         }
             
     }
