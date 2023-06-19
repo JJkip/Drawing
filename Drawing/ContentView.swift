@@ -33,9 +33,11 @@ struct ContentView: View {
             .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
             
             Triangle()
-                .fill(.red)
+            //            .fill(.red)
+                .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
                 .frame(width: 300, height: 300)
         }
+            
     }
 }
 
