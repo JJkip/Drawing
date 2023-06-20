@@ -82,6 +82,9 @@ struct Flower: Shape {
 }
 
 struct ContentView: View {
+    @State private var petalOffset = -20.0
+    @State private var petalWidth = 100.0
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -106,6 +109,17 @@ struct ContentView: View {
                     .stroke(.orange, lineWidth: 40)
                 Arc(startAgle: .degrees(-90), endAngle: .degrees(90), clockwise: true)
                     .strokeBorder(.brown, lineWidth: 40)
+                VStack {
+                    Flower(petalOffset: petalOffset, petalWidth: petalWidth)
+//                        .stroke(.purple, lineWidth: 1)
+                        .fill(.pink, style: FillStyle(eoFill: true))
+                    Text("Offset")
+                    Slider(value: $petalOffset, in: -40...40)
+                        .padding([.horizontal, .bottom])
+                    Text("Width")
+                    Slider(value: $petalWidth, in: 0...100)
+                        .padding(.horizontal)
+                }
             }
         }
     }
