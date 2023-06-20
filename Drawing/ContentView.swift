@@ -41,26 +41,29 @@ struct Arc: Shape {
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Path { path in
-                path.move(to: CGPoint(x: 200, y: 100))
-                path.addLine(to: CGPoint(x: 100, y: 300))
-                path.addLine(to: CGPoint(x: 300, y: 300))
-                path.addLine(to: CGPoint(x: 200, y: 100))
-                path.closeSubpath()
+        ScrollView {
+            VStack {
+                Path { path in
+                    path.move(to: CGPoint(x: 200, y: 100))
+                    path.addLine(to: CGPoint(x: 100, y: 300))
+                    path.addLine(to: CGPoint(x: 300, y: 300))
+                    path.addLine(to: CGPoint(x: 200, y: 100))
+                    path.closeSubpath()
+                }
+                .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                
+                Triangle()
+                //            .fill(.red)
+                    .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                    .frame(width: 300, height: 300)
+                
+                Arc(startAgle: .degrees(0), endAngle: .degrees(110), clockwise: true)
+                    .stroke(.green, lineWidth: 10)
+                    .frame(width:300, height: 300)
+                Circle()
+                    .stroke(.orange, lineWidth: 40)
             }
-            .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-            
-            Triangle()
-            //            .fill(.red)
-                .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-                .frame(width: 300, height: 300)
-            
-            Arc(startAgle: .degrees(0), endAngle: .degrees(110), clockwise: true)
-                .stroke(.green, lineWidth: 10)
-                .frame(width:300, height: 300)
         }
-            
     }
 }
 
