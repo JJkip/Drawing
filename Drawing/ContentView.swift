@@ -129,7 +129,10 @@ struct ContentView: View {
                 /*Image as border won't work unless the image is the exact right size, you have very little control over how it should look.
                  
 */
-                    .border(Image("Example"), width:30)
+//                    .border(Image("Example"), width:30)
+//                    .border(ImagePaint(image: Image("Example"), scale: 0.2), width: 30)
+                    .border(ImagePaint(image: Image("Example"), sourceRect: CGRect(x: 0, y: 0.25, width: 1, height: 0.5), scale: 0.1), width: 30)
+                
             }
         }
     }
