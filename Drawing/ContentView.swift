@@ -122,7 +122,9 @@ struct ContentView: View {
                 }
                 Text("Whats Up Africa")
                     .frame(width: 300, height: 300)
-                    .background(.red)
+//                    .background(.red)
+//                    .border(.red, width: 30)
+                    .background(Image("Example"))
             }
         }
     }
