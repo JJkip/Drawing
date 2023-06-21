@@ -121,6 +121,7 @@ struct ContentView: View {
                         .padding(.horizontal)
                 }
                 Text("Whats Up Africa")
+                    .font(.title)
                     .frame(width: 300, height: 300)
 //                    .background(.red)
 //                    .border(.red, width: 30)
