@@ -120,6 +120,9 @@ struct ContentView: View {
                     Slider(value: $petalWidth, in: 0...100)
                         .padding(.horizontal)
                 }
+                Text("Whats Up Africa")
+                    .frame(width: 300, height: 300)
+                    .background(.red)
             }
         }
     }
