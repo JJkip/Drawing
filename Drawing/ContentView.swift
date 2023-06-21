@@ -124,7 +124,12 @@ struct ContentView: View {
                     .frame(width: 300, height: 300)
 //                    .background(.red)
 //                    .border(.red, width: 30)
-                    .background(Image("Example"))
+//                    .background(Image("Example"))
+                
+                /*Image as border won't work unless the image is the exact right size, you have very little control over how it should look.
+                 
+*/
+                    .border(Image("Example"), width:30)
             }
         }
     }
