@@ -182,6 +182,15 @@ struct ContentView: View {
                     Slider(value: $colorCycle)
                 }
                 
+                ZStack {
+                    Image("Example")
+                    Rectangle()
+                        .fill(.red)
+                        .blendMode(.multiply)
+                }
+                .frame(width: 300, height: 300)
+                .clipped()
+                
             }
         }
     }
