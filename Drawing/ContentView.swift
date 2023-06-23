@@ -124,31 +124,108 @@ struct ContentView: View {
     @State private var amount = 0.0
     
     var body: some View {
-        VStack {
-            ZStack {
+        ScrollView {
+            VStack {
+                Path { path in
+                    path.move(to: CGPoint(x: 200, y: 100))
+                    path.addLine(to: CGPoint(x: 100, y: 300))
+                    path.addLine(to: CGPoint(x: 300, y: 300))
+                    path.addLine(to: CGPoint(x: 200, y: 100))
+                    path.closeSubpath()
+                }
+                .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                
+                Triangle()
+                //            .fill(.red)
+                    .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                    .frame(width: 300, height: 300)
+                
+                Arc(startAgle: .degrees(0), endAngle: .degrees(110), clockwise: true)
+                    .stroke(.green, lineWidth: 10)
+                    .frame(width:300, height: 300)
                 Circle()
-                    .fill(Color(red: 1, green: 0, blue: 0))
-                    .frame(width: 200 * amount)
-                    .offset(x: -50, y: -80)
-                    .blendMode(.screen)
-                Circle()
-                    .fill(Color(red: 0, green: 1, blue: 0))
-                    .frame().frame(width: 200 * amount)
-                    .offset(x: 50, y: -80)
-                    .blendMode(.screen)
-                Circle()
-                    .fill(Color(red: 0, green: 0, blue: 1))
-                    .frame().frame(width: 200 * amount)
-                    .blendMode(.screen)
+                    .stroke(.orange, lineWidth: 40)
+                Arc(startAgle: .degrees(-90), endAngle: .degrees(90), clockwise: true)
+                    .strokeBorder(.brown, lineWidth: 40)
+                VStack {
+                    Flower(petalOffset: petalOffset, petalWidth: petalWidth)
+//                        .stroke(.purple, lineWidth: 1)
+                        .fill(.pink, style: FillStyle(eoFill: true))
+                    Text("Offset")
+                    Slider(value: $petalOffset, in: -40...40)
+                        .padding([.horizontal, .bottom])
+                    Text("Width")
+                    Slider(value: $petalWidth, in: 0...100)
+                        .padding(.horizontal)
+                }
+                Text("Whats Up Africa")
+                    .font(.title)
+                    .frame(width: 300, height: 300)
+//                    .background(.red)
+//                    .border(.red, width: 30)
+//                    .background(Image("Example"))
+                
+                /*Image as border won't work unless the image is the exact right size, you have very little control over how it should look.
+                 
+*/
+//                    .border(Image("Example"), width:30)
+//                    .border(ImagePaint(image: Image("Example"), scale: 0.2), width: 30)
+                    .border(ImagePaint(image: Image("Example"), sourceRect: CGRect(x: 0, y: 0.25, width: 1, height: 0.5), scale: 0.1), width: 30)
+                Capsule()
+                    .strokeBorder(ImagePaint(image: Image ("Example"), scale: 0.1), lineWidth: 20)
+                    .frame(width: 300, height: 200)
+                
+                VStack {
+                    ColorCyclingCircle(amount: colorCycle)
+                        .frame(width: 300, height: 300)
+                        
+                    
+                    Slider(value: $colorCycle)
+                }
+                
+                ZStack {
+                    Image("Example")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .saturation(amount)
+                        .blur(radius: (1 - amount) * 20)
+                        .colorMultiply(.red)
+//                    Rectangle()
+//                        .fill(.red)
+//                        .blendMode(.multiply)
+                }
+//                .frame(width: 300, height: 300)
+//                .clipped()
+                /*
+                VStack {
+                    ZStack {
+                        Circle()
+                            .fill(Color(red: 1, green: 0, blue: 0))
+                            .frame(width: 200 * amount)
+                            .offset(x: -50, y: -80)
+                            .blendMode(.screen)
+                        Circle()
+                            .fill(Color(red: 0, green: 1, blue: 0))
+                            .frame().frame(width: 200 * amount)
+                            .offset(x: 50, y: -80)
+                            .blendMode(.screen)
+                        Circle()
+                            .fill(Color(red: 0, green: 0, blue: 1))
+                            .frame().frame(width: 200 * amount)
+                            .blendMode(.screen)
+                    }
+                    .frame(width: 300, height: 300)
+                    
+                    Slider(value: $amount)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.black)
+                .ignoresSafeArea()
+                */
+                
             }
-            .frame(width: 300, height: 300)
-            
-            Slider(value: $amount)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black)
-        .ignoresSafeArea()
-        
     }
 }
 
