@@ -184,12 +184,13 @@ struct ContentView: View {
                 
                 ZStack {
                     Image("Example")
-                    Rectangle()
-                        .fill(.red)
-                        .blendMode(.multiply)
+                        .colorMultiply(.red)
+//                    Rectangle()
+//                        .fill(.red)
+//                        .blendMode(.multiply)
                 }
-                .frame(width: 300, height: 300)
-                .clipped()
+//                .frame(width: 300, height: 300)
+//                .clipped()
                 
             }
         }
