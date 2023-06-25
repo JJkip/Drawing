@@ -192,11 +192,14 @@ struct ContentView: View {
                         .saturation(amount)
                         .blur(radius: (1 - amount) * 20)
                         .colorMultiply(.red)
+                    Slider(value: $amount)
+                        .padding()
 //                    Rectangle()
 //                        .fill(.red)
 //                        .blendMode(.multiply)
                 }
-//                .frame(width: 300, height: 300)
+                .frame(width: 300, height: 300)
+                .background(.black)
 //                .clipped()
                 /*
                 VStack {
