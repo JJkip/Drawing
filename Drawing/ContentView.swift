@@ -143,6 +143,7 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack {
+                
                 Path { path in
                     path.move(to: CGPoint(x: 200, y: 100))
                     path.addLine(to: CGPoint(x: 100, y: 300))
@@ -195,11 +196,9 @@ struct ContentView: View {
                 VStack {
                     ColorCyclingCircle(amount: colorCycle)
                         .frame(width: 300, height: 300)
-                        
-                    
                     Slider(value: $colorCycle)
                 }
-                
+                /*
                 ZStack {
                     Image("Example")
                         .resizable()
@@ -217,6 +216,7 @@ struct ContentView: View {
                 .frame(width: 300, height: 300)
                 .background(.black)
 //                .clipped()
+                */
                 /*
                 VStack {
                     ZStack {
@@ -248,7 +248,6 @@ struct ContentView: View {
                     .onTapGesture {
                         insetAmount = Double.random(in: 10...90)
                     }
-                
             }
         }
     }
