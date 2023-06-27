@@ -11,6 +11,17 @@ import SwiftUI
 struct Checkerboard: Shape {
     var rows: Int
     var columns: Int
+    
+    var animatableData: AnimatablePair<Double, Double> {
+        get {
+           AnimatablePair(Double(rows), Double(columns))
+        }
+
+        set {
+            rows = Int(newValue.first)
+            columns = Int(newValue.second)
+        }
+    }
 
     func path(in rect: CGRect) -> Path {
         var path = Path()
