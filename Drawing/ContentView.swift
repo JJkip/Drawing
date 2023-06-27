@@ -23,6 +23,15 @@ struct Spirograph: Shape {
         }
         return a
     }
+    
+    func path(in rect: CGRect) -> Path {
+        let divisor = gcd(innerRadius, outerRadius)
+        let outerRadius = Double(self.outerRadius)
+        let innerRadius = Double(self.innerRadius)
+        let distance = Double(self.distance)
+        let difference = innerRadius - outerRadius
+        let endpoint = ceil(2 * Double.pi * outerRadius / Double(divisor)) * amount
+    }
 }
 
 struct Checkerboard: Shape {
